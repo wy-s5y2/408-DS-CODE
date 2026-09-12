@@ -11,19 +11,19 @@ using namespace std;
 #define MAXN 1001
 int d[MAXN];
 
-typedef struct Node{
+typedef struct ListNode{
     int data;
-    struct Node *next; 
-} Node;
+    struct ListNode *next; 
+} ListNode;
 
-Node *createlink(int a[], int m)
+ListNode *createlink(int a[], int m)
 {
-    Node *head = (Node *)malloc(sizeof(Node));
+    ListNode *head = (ListNode *)malloc(sizeof(ListNode));
     head->next = NULL;
-    Node *tail = head;
+    ListNode *tail = head;
 
     for(int i=0;i<m;i++){
-        Node *p = (Node *)malloc(sizeof(Node));
+        ListNode *p = (ListNode *)malloc(sizeof(ListNode));
         p->data = a[i];
 
         tail->next = p;
@@ -34,7 +34,7 @@ Node *createlink(int a[], int m)
 }
 
 // 关键函数
-void deletenode(Node *h)
+void deletenode(ListNode *h)
 {
     for(int i=0;i<MAXN;i++){
         d[i] = 0;
@@ -50,7 +50,7 @@ void deletenode(Node *h)
     }
 }
 
-void display(Node *h)
+void display(ListNode *h)
 {
     h = h->next;
     while(h != NULL){
@@ -66,7 +66,7 @@ int main()
 {
     int a[] = {21,-15,-15,-7,15};
     int m = sizeof(a)/sizeof(a[0]);
-    Node *h = createlink(a,m);
+    ListNode *h = createlink(a,m);
     
     deletenode(h);
     display(h);

@@ -6,7 +6,45 @@
 */
 #include<iostream>
 using namespace std;
+
+void reverse(int a[], int l, int r)
+{
+    while(l<r){
+        int temp = a[l];
+        a[l] = a[r];
+        a[r] = temp;
+        l++;
+        r--;
+    }
+}
+
+void loopmove(int a[], int n, int p)
+{
+    if(p<0){
+        return;
+    }
+    p = p%n;
+    reverse(a,0,p-1);
+    reverse(a,p,n-1);
+    reverse(a,0,n-1);
+}
+
 int main()
 {
+    int a[] = {1,2,3,4,5,6,7,8,9};
+    int n = sizeof(a)/sizeof(a[0]);
+
+    int p=4;
+
+    for(int i=0;i<n;i++){
+        cout<<a[i]<<" ";
+    }
+    cout<<endl;
+
+    loopmove(a,n,p);
+
+    for(int i=0;i<n;i++){
+        cout<<a[i]<<" ";
+    }
     return 0;
 }
